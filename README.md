@@ -2,7 +2,7 @@
 
 This repository contains the code for the paper [Seeing Red: PPG Biometrics Using Smartphone Cameras]() published in the [15th IEEE Computer Vision Society Workshop on Biometrics](https://www.vislab.ucr.edu/Biometrics2020/)
 
-### Idea
+## Idea
 In this work we investigated the use of photoplethysmography (PPG) for authentication.
 An individual's PPG signal can be extracted by taking a video with a smartphone camera as users place their finger on the sensor.
 The blood flowing through the finger changes the reflective properties of the skin, which is captured by subtle changes in the video color.
@@ -19,7 +19,7 @@ We designed a set of features that capture the distinctiveness of each individua
 
 <p align="center"><img src="/images/features.png" width="70%"></p>
 
-### Reproduce Results
+## Reproduce Results
 
 The code runs inside a Docker container and requires `docker` and `docker-compose` to be installed in your system.
 
