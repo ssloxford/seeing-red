@@ -7,18 +7,17 @@ In this work we investigated the use of photoplethysmography (PPG) for authentic
 An individual's PPG signal can be extracted by taking a video with a smartphone camera as users place their finger on the sensor.
 The blood flowing through the finger changes the reflective properties of the skin, which is captured by subtle changes in the video color.
 
-![System Overview](/images/system-overview.png)
+<p align="center"><img src="/images/system-overview.png" width="70%"></p>
 
 We collected PPG signals from 15 participants over several sessions (6-11), in each session the participant places his finger on the camera while a 30 seconds long video is taken.
 We extract the raw value of the LUMA component of each video frame to obtain the underlying PPG signal from a video.
 The signals are then preprocessed with a set of filters to remove trends and high frequency components, and then each individual heartbeat is separated with a custom algorithm.
 
-![Preprocessing](/images/preprocessing.png)
+<p align="center"><img src="/images/preprocessing.png" width="70%"></p>
 
 We designed a set of features that capture the distinctiveness of each individual's PPG signal and we evaluated the authentication performance with a  set of experiments (see [Reproduce Results](#reproduce-results)).
 
-![Signal Features](/images/features.png)
-
+<p align="center"><img src="/images/features.png" width="70%"></p>
 
 ### Reproduce Results
 
