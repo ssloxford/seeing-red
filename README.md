@@ -1,4 +1,4 @@
-# Seeing Red
+# Seeing Red: PPG Biometrics Using Smartphone Cameras
 
 This repository contains the code for the paper "Seeing Red: PPG Biometrics Using Smartphone Cameras" published in the [15th IEEE Computer Vision Society Workshop on Biometrics](https://www.vislab.ucr.edu/Biometrics2020/).
 This work is a collaboration between [Giulio Lovisotto](https://github.com/giuliolovisotto/), [Henry Turner](http://www.cs.ox.ac.uk/people/henry.turner/) and [Simon Eberz](https://www.cs.ox.ac.uk/people/simon.eberz/) from the System Security Lab at University of Oxford.
