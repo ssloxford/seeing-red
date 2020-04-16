@@ -29,7 +29,9 @@ Each video is a 30 seconds long recording which was taken as the participant kep
 
 <p align="center"><img src="/images/video-example.gif" width="50%"></p>
 
-## Reproduce Results (coming soon)
+## Reproduce Results
+
+### As of 16-04-2020, we are in the process of publishing the dataset with our institution, the code will come as soon as the dataset is available.
 
 The code runs inside a Docker container and requires `docker` and `docker-compose` to be installed in your system.
 
