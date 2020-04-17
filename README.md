@@ -37,8 +37,9 @@ You might be able to make this work on a generic python/anaconda environment wit
   
 To reproduce the evaluation, follow these steps:
  1. **read the [paper](https://arxiv.org/pdf/2004.07088.pdf)** - this is the only way you will understand what you are doing
+ 1. Clone this repository
  1. download the [dataset](https://ora.ox.ac.uk/objects/uuid:1a04e852-e7e1-4981-aa83-f2e729371484) used in the paper, unzip the archive and place the downloaded `videos` folder in `seeing-red/data/`
- 1. build and start the container by running `docker-compose build`
+ 1. build and start the container by running `docker-compose up -d`
  1. attach to the container with `docker attach seeingred_er`
  1. in the container, `cd /home/code` and run the entire signal analysis pipeline with `python signal_run_all.py`
 
