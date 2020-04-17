@@ -1,0 +1,17 @@
+# This compose file is designed to be run with 
+# the start_container.sh script which sets the 
+# required variables.
+version: "3"
+services:
+    seeingred:
+        build: .
+        image: seeingred:seeingred
+#        environment:
+#            - QT_X11_NO_MITSHM=1
+        container_name: seeingred_er
+        stdin_open: true
+        tty: true
+        volumes:
+#            - "/tmp/.X11-unix:/tmp/.X11-unix:rw"
+            - "./code:/home/code/"
+            - "./data:/home/data/"
