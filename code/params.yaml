@@ -1,0 +1,141 @@
+beat_detection:
+- name: hb_argrelmin
+  params:
+    max_bpm: 101
+    order: 2
+    smooth_window_size: 13
+beat_separation:
+- name: hb_argrelmin
+  params:
+    max_bpm: 101
+    order: 2
+    processed_column_name: luma_mean>roll_avg>sub>lpf>cut_start
+    smooth_window_size: 13
+classification:
+  classifiers:
+  - aggregation: mean
+    name: svm_1
+    params:
+      gamma: auto
+      kernel: rbf
+      nu: 0.5
+  - aggregation: median
+    name: isolationforest
+    params:
+      contamination: 0.5
+      n_estimators: 50
+extractor:
+- functions:
+  - luma_component_mean
+  name: luma_mean
+  parameters:
+    initial_skip_seconds: 0
+- functions:
+  - red_channel_mean
+  name: r_ch_mean
+  parameters:
+    initial_skip_seconds: 0
+feature_extractor:
+- name: f_cheating
+  params: {}
+- name: f_widths
+  params:
+    interp_dim: 200
+    widths_at:
+    - 5
+    - 10
+    - 15
+    - 20
+    - 25
+    - 30
+    - 35
+    - 40
+    - 45
+    - 50
+    - 55
+    - 60
+    - 65
+    - 70
+    - 75
+    - 80
+    - 85
+    - 90
+    - 95
+- name: f_fft
+  params:
+    interp_dim: 200
+- name: f_fiducial_points
+  params:
+    interp_dim: 200
+feature_selection1:
+  f_fft:
+    name: pca
+    params:
+      explained_v: 0.99
+      n_components: 100
+      prefix: fft
+      scale: false
+      scaler: false
+  f_widths:
+    name: pca
+    params:
+      explained_v: 0.99
+      n_components: 15
+      prefix: widths
+      scale: false
+      scaler: false
+feature_selection2:
+- name: mRMR
+  params:
+    retain_ratio: .6
+    method: MIQ
+    n_bins: 100
+    outliers: true
+- name: rmi
+  params:
+    min_rmi: null
+    outliers: true
+    retain_ratio: .6
+frame_rate: 240
+preprocessor:
+  filter_chains:
+  - flist:
+    - name: roll_avg
+      params:
+        window_size_seconds: 1.01
+    - name: sub
+      params: {}
+    - name: lpf
+      params:
+        filter_order: 2
+        low: 4
+    - name: cut_start
+      params:
+        seconds: 3
+    name: chain2
+#  - flist:
+#    - name: bandpass
+#      params:
+#        highcut: 10
+#        lowcut: 0.4
+#        order: 2
+#    - name: cut_start
+#      params:
+#        seconds: 3
+#    name: chain1
+  - flist:
+    - name: cut_start
+      params:
+        seconds: 3
+    - name: hpf
+      params:
+        cutoff: 0.5
+        order: 1
+    - name: bpf_bpm
+      params:
+        multiplier: 3
+        mincut: 0.01
+        order: 1
+    name: dynamic_bpm
+  sources:
+  - luma_mean
