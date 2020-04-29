@@ -1,7 +1,7 @@
 # Seeing Red: PPG Biometrics Using Smartphone Cameras
 
 This repository contains the code for the paper "[Seeing Red: PPG Biometrics Using Smartphone Cameras](https://arxiv.org/pdf/2004.07088.pdf)" published in the [15th IEEE Computer Vision Society Workshop on Biometrics](https://www.vislab.ucr.edu/Biometrics2020/).
-This work is a collaboration between [Giulio Lovisotto](https://github.com/giuliolovisotto/), [Henry Turner](http://www.cs.ox.ac.uk/people/henry.turner/) and [Simon Eberz](https://www.cs.ox.ac.uk/people/simon.eberz/) from the System Security Lab at University of Oxford.
+This work is a collaboration between [Giulio Lovisotto](https://github.com/giuliolovisotto/), [Henry Turner](http://www.cs.ox.ac.uk/people/henry.turner/) and [Simon Eberz](https://www.cs.ox.ac.uk/people/simon.eberz/) from the [System Security Lab](http://www.cs.ox.ac.uk/groups/seclab/) at University of Oxford.
 
 
 ## Idea
@@ -45,46 +45,21 @@ To reproduce the evaluation, follow these steps:
 
 Results will be produced in several subfolders in `seeing-red/data/`.
 
-## License
+## Citation
+If you use this repository please cite the paper as follows:
+```
+@inproceedings{lovisotto2020seeing,
+  title={Seeing Red: PPG Biometrics Using Smartphone Cameras},
+  author={Lovisotto, Giulio and Turner, Henry and Eberz, Simon and Martinovic, Ivan},
+  booktitle={IEEE 15th Computer Society Workshop on Biometrics},
+  year={2020}
+}
+```
 
-The Clear BSD License + Commons Clause
-
-Copyright (c) 2019-2020,Giulio Lovisotto, Henry Turner, Simon Eberz
-All rights reserved.
-
-Redistribution and use in source and binary forms, with or without
-modification, are permitted provided that the following conditions are met:
-
-1. Redistributions of source code must retain the above copyright notice, this
-   list of conditions and the following disclaimer.
-
-2. Redistributions in binary form must reproduce the above copyright notice,
-   this list of conditions and the following disclaimer in the documentation
-   and/or other materials provided with the distribution.
-
-3. Neither the name of the copyright holder nor the names of its
-   contributors may be used to endorse or promote products derived from
-   this software without specific prior written permission.
-
-NO EXPRESS OR IMPLIED LICENSES TO ANY PARTY'S PATENT RIGHTS ARE GRANTED BY THIS LICENSE.
-THIS SOFTWARE IS PROVIDED BY THE COPYRIGHT HOLDERS AND CONTRIBUTORS "AS IS"
-AND ANY EXPRESS OR IMPLIED WARRANTIES, INCLUDING, BUT NOT LIMITED TO, THE
-IMPLIED WARRANTIES OF MERCHANTABILITY AND FITNESS FOR A PARTICULAR PURPOSE ARE
-DISCLAIMED. IN NO EVENT SHALL THE COPYRIGHT HOLDER OR CONTRIBUTORS BE LIABLE
-FOR ANY DIRECT, INDIRECT, INCIDENTAL, SPECIAL, EXEMPLARY, OR CONSEQUENTIAL
-DAMAGES (INCLUDING, BUT NOT LIMITED TO, PROCUREMENT OF SUBSTITUTE GOODS OR
-SERVICES; LOSS OF USE, DATA, OR PROFITS; OR BUSINESS INTERRUPTION) HOWEVER
-CAUSED AND ON ANY THEORY OF LIABILITY, WHETHER IN CONTRACT, STRICT LIABILITY,
-OR TORT (INCLUDING NEGLIGENCE OR OTHERWISE) ARISING IN ANY WAY OUT OF THE USE
-OF THIS SOFTWARE, EVEN IF ADVISED OF THE POSSIBILITY OF SUCH DAMAGE.
-
-“Commons Clause” License Condition v1.0
-
-The Software is provided to you by the Licensor under the License, as defined below, subject to the following condition.
-
-Without limiting other conditions in the License, the grant of rights under the License will not include, and the License does not grant to you, the right to Sell the Software.
-
-For purposes of the foregoing, “Sell” means practicing any or all of the rights granted to you under the License to provide to third parties, for a fee or other consideration (including without limitation fees for hosting or consulting/ support services related to the Software), a product or service whose value derives, entirely or substantially, from the functionality of the Software. Any license notice or attribution required by the License must also include this Commons Clause License Condition notice.
+## Contributors
+ * [Giulio Lovisotto](https://github.com/giuliolovisotto/)
+ * [Henry Turner](http://www.cs.ox.ac.uk/people/henry.turner/)
+ * [Simon Eberz](https://www.cs.ox.ac.uk/people/simon.eberz/)
 
 ## Acknowledgements
 
