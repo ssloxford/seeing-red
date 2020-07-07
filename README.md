@@ -1,6 +1,6 @@
 # Seeing Red: PPG Biometrics Using Smartphone Cameras
 
-This repository contains the code for the paper "[Seeing Red: PPG Biometrics Using Smartphone Cameras](https://arxiv.org/pdf/2004.07088.pdf)" published in the [15th IEEE Computer Vision Society Workshop on Biometrics](https://www.vislab.ucr.edu/Biometrics2020/).
+This repository contains the code for the paper "[Seeing Red: PPG Biometrics Using Smartphone Cameras](https://arxiv.org/pdf/2004.07088.pdf)" published in the Proceedings of the IEEE Conference on Computer Vision and Pattern Recognition Workshops at the [15th IEEE Computer Vision Society Workshop on Biometrics](https://www.vislab.ucr.edu/Biometrics2020/).
 This work is a collaboration between [Giulio Lovisotto](https://github.com/giuliolovisotto/), [Henry Turner](http://www.cs.ox.ac.uk/people/henry.turner/) and [Simon Eberz](https://www.cs.ox.ac.uk/people/simon.eberz/) from the [System Security Lab](http://www.cs.ox.ac.uk/groups/seclab/) at University of Oxford.
 
 
@@ -9,7 +9,7 @@ In this work we investigated the use of photoplethysmography (PPG) for authentic
 An individual's PPG signal can be extracted by taking a video with a smartphone camera as users place their finger on the sensor.
 The blood flowing through the finger changes the reflective properties of the skin, which is captured by subtle changes in the video color.
 
-<p align="center"><img src="/images/system-overview.png" width="70%"></p>
+<p align="center"><img src="/images/teaser.gif" width="50%"></p>
 
 We collected PPG signals from 15 participants over several sessions (6-11), in each session the participant places his finger on the camera while a 30 seconds long video is taken.
 We extract the raw value of the LUMA component of each video frame to obtain the underlying PPG signal from a video.
@@ -20,6 +20,8 @@ The signals are then preprocessed with a set of filters to remove trends and hig
 We designed a set of features that capture the distinctiveness of each individual's PPG signal and we evaluated the authentication performance with a  set of experiments (see [Reproduce Evaluation](#reproduce-evaluation)).
 
 <p align="center"><img src="/images/features.png" width="70%"></p>
+
+See the conference presentation [slides](https://github.com/ssloxford/seeing-red/blob/master/images/talk.pdf)
 
 ## Dataset
 
@@ -48,10 +50,10 @@ Results will be produced in several subfolders in `seeing-red/data/`.
 ## Citation
 If you use this repository please cite the paper as follows:
 ```
-@inproceedings{lovisotto2020seeing,
+@inproceedings{lovisotto2020seeingred,
   title={Seeing Red: PPG Biometrics Using Smartphone Cameras},
   author={Lovisotto, Giulio and Turner, Henry and Eberz, Simon and Martinovic, Ivan},
-  booktitle={IEEE 15th Computer Society Workshop on Biometrics},
+  booktitle={Proceedings of the IEEE Conference on Computer Vision and Pattern Recognition Workshops (CVPRW)},
   year={2020}
 }
 ```
