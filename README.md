@@ -50,12 +50,13 @@ Results will be produced in several subfolders in `seeing-red/data/`.
 ## Citation
 If you use this repository please cite the paper as follows:
 ```
-@inproceedings{lovisotto2020seeingred,
-  title={Seeing Red: PPG Biometrics Using Smartphone Cameras},
-  author={Lovisotto, Giulio and Turner, Henry and Eberz, Simon and Martinovic, Ivan},
-  booktitle={Proceedings of the IEEE Conference on Computer Vision and Pattern Recognition Workshops (CVPRW)},
-  year={2020}
-}
+@InProceedings{Lovisotto_2020_CVPR_Workshops,
+  author = {Lovisotto, Giulio and Turner, Henry and Eberz, Simon and Martinovic, Ivan},
+  title = {Seeing Red: PPG Biometrics Using Smartphone Cameras},
+  booktitle = {The IEEE/CVF Conference on Computer Vision and Pattern Recognition (CVPR) Workshops},
+  month = {June},
+  year = {2020}
+} 
 ```
 
 ## Contributors
