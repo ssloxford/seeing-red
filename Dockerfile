@@ -16,9 +16,9 @@ RUN apt -y install python3 python3-dev python3-opencv python3-pip python3-tk
 
 RUN python3 -m pip install --upgrade pip
 
-RUN pip3 install numpy scipy pandas matplotlib Pillow scikit-image scikit-video scikit-learn
+RUN pip3 install numpy==1.19.4 scipy==1.4.0 pandas==1.0.4 matplotlib Pillow scikit-image==0.17.1 scikit-video scikit-learn==0.23.2
 RUN pip3 install cython
-RUN pip3 install pymrmr imutils tslearn xgboost pyyaml
+RUN pip3 install pymrmr imutils tslearn xgboost==1.2.1 pyyaml==5.3.1
 
 RUN ln -s /usr/bin/python3 /usr/bin/python
 
