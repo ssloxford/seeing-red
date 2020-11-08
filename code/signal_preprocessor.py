@@ -46,7 +46,7 @@ class SignalPreprocessor():
         signal_fft = np.abs(scipy.fftpack.fft(no_nan_signal))[:N // 2]
         signal_fft = signal_fft / signal_fft.max()
 
-        freq_x = np.linspace(0.0, 1.0 / (2.0 * T), N / 2)
+        freq_x = np.linspace(0.0, 1.0 / (2.0 * T), N // 2)
 
         max_cutoff = freq_x[np.argmax(signal_fft)] * multiplier
         y = self.butter_highpass_filter(no_nan_signal, max_cutoff, order)
