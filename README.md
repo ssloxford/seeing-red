@@ -47,6 +47,56 @@ To reproduce the evaluation, follow these steps:
 
 Results will be produced in several subfolders in `seeing-red/data/`.
 
+### Read EER Results
+
+Resulting Equal Error Rates (EER) are produced by three functions defined in `classify.py` and saved in subfolders in `seeing-red/data/results/<expid>`
+  * `exp1` produces the results used in paper *Section 5.1: Multi-class Case*, saved in `data/results/exp1/all.npy` and `data/results/exp1/all-fta.npy`  
+  * `exp3` produces the results used in paper *Section 5.2: One-class Case*, saved in `data/results/exp3/all.npy` and `data/results/exp3/all-fta.npy`  
+  * `exp4` produces the results used in paper *Section 5.3: One-class Cross-Session*, saved in `data/results/exp4/all.npy` and `data/results/exp4/all-fta.npy`  
+  
+NB.: paper Section 5.4: EER User Distribution re-uses the results from `exp3` and `exp4`. 
+
+A file `results/<expid>/all.npy` is a numpy multidimensional array containing EER measurements, each table dimension is described by the `descr.json` contained in the same folder.
+
+For example, if you load the result file for `exp1` and its description file, you can read results this way: 
+```
+import numpy as np
+import json
+eers = np.load("/home/data/results/exp1/all.npy")  # load the file
+descr = json.load(open("/home/data/results/exp1/descr.json"))  # load the description for the result file
+
+# "header" in descr decribes the dimensions of the eers array
+# the number of dimensions of eers should match the length of the header
+assert len(descr["header"]) == len(eers.shape)
+
+print(descr["header"])  # ["fold", "clf", "window_size", "user"]
+print(eers.shape)  # should be (2, 3, 5, 14) for exp1
+
+# let's print an EER for a specific instance
+# select one index across each dimension
+fold_index = 0
+clf_index = descr["clf"].index("SVM")  # one of ["SVM", "GBT", "RFC"]
+aws_index = descr["window_size"].index(5)  # one of [1, 2, 5, 10, 20]
+usr_index = 3 
+print("The EER measured for fold %d, classifier %s, aggregation window size of %d and user %d is %.4f" % (
+          fold_index, descr["clf"][clf_index], descr["window_size"][aws_index], usr_index, eers[fold_index, clf_index, aws_index, usr_index]))
+```
+
+In the paper, to get an EER for a (classifier, aggregation window size) pair, we take the average across folds and across users:
+```
+# let's take "SVM" and aggregation window size of 5
+eers = np.load("/home/data/results/exp1/all.npy")  # load the file
+chosen_clf = "SVM"  # one of ["SVM", "GBT", "RFC"]
+chosen_aws = 5  # one of [1, 2, 5, 10, 20]
+clf_index = descr["clf"].index(chosen_clf)
+aws_index = descr["window_size"].index(chosen_aws)
+eers = eers[:, clf_index, aws_index, :]
+eers_mean = eers.mean(axis=0).mean(axis=-1)  # we average across folds first to produce confidence intervals
+eers_std = eers.mean(axis=0).std(axis=-1)
+print("The average EER measured for exp1 using %s and aggregation window size of %d is %.4f with standard deviation of %.4f" % (
+           chosen_clf, chosen_aws, eers_mean, eers_std))
+```
+
 ## Citation
 If you use this repository please cite the paper as follows:
 ```
