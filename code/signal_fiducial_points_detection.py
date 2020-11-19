@@ -83,18 +83,26 @@ class SignalFiducialPointsDetector():
                 if len(mins_after_p4) > 0:
                     p5 = mins_after_p4[0] + p4
 
+            # adding sanity checks
+            # defaulting to moot indexes if the function fails to locate fiducial points
+            p1 = max(0, min(int(p1), len(_b) - 1))
+            p2 = max(0, min(int(p2), len(_b) - 1))
+            p3 = max(0, min(int(p3), len(_b) - 1))
+            p4 = max(0, min(int(p4), len(_b) - 1))
+            p5 = max(0, min(int(p1), len(_b) - 1))
+
             res[i] = {}
             res[i]["_b"] = _b.tolist()
             res[i]["_1b"] = _1b.tolist()
             res[i]["_2b"] = _2b.tolist()
-            res[i]["p1"] = int(p1)
-            res[i]["systolic_peak_i"] = int(p2)
+            res[i]["p1"] = p1
+            res[i]["systolic_peak_i"] = p2
             res[i]["systolic_peak_c"] = 1.0
-            res[i]["dychrotic_notch_i"] = int(p3)
+            res[i]["dychrotic_notch_i"] = p3
             res[i]["dychrotic_notch_c"] = 1.0
-            res[i]["diastolic_peak_i"] = int(p4)
+            res[i]["diastolic_peak_i"] = p4
             res[i]["diastolic_peak_c"] = 1.0
-            res[i]["p5"] = int(p5)
+            res[i]["p5"] = p5
 
         return res
 
