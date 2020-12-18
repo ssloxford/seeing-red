@@ -15,11 +15,11 @@ We collected PPG signals from 15 participants over several sessions (6-11), in e
 We extract the raw value of the LUMA component of each video frame to obtain the underlying PPG signal from a video.
 The signals are then preprocessed with a set of filters to remove trends and high frequency components, and then each individual heartbeat is separated with a custom algorithm.
 
-<p align="center"><img src="https://github.com/ssloxford/seeing-red/blob/master/images/preprocessing.png" width="60%"></p>
+<p align="center"><img src="https://raw.githubusercontent.com/ssloxford/seeing-red/master/images/preprocessing.png" width="60%"></p>
 
 We designed a set of features that capture the distinctiveness of each individual's PPG signal and we evaluated the authentication performance with a  set of experiments (see [Reproduce Evaluation](#reproduce-evaluation)).
 
-<p align="center"><img src="https://github.com/ssloxford/seeing-red/blob/master/images/features.png" width="70%"></p>
+<p align="center"><img src="https://raw.githubusercontent.com/ssloxford/seeing-red/master/images/features.png" width="70%"></p>
 
 See the conference presentation [slides](https://github.com/ssloxford/seeing-red/blob/master/images/talk.pdf)
 
@@ -29,7 +29,7 @@ The [dataset](https://ora.ox.ac.uk/objects/uuid:1a04e852-e7e1-4981-aa83-f2e72937
 The dataset contains a set of videos for 14 participants who consented to their data being shared, ethics approval number SSD/CUREC1A CS_C1A_19_032.
 Each video is a 30 seconds long recording which was taken as the participant kept his index finger on the smartphone camera, see a preview here.
 
-<p align="center"><img src="https://github.com/ssloxford/seeing-red/blob/master/images/video-example.gif" width="50%"></p>
+<p align="center"><img src="https://raw.githubusercontent.com/ssloxford/seeing-red/master/images/video-example.gif" width="50%"></p>
 
 ## Reproduce Evaluation
 
