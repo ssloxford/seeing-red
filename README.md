@@ -9,7 +9,7 @@ In this work we investigated the use of photoplethysmography (PPG) for authentic
 An individual's PPG signal can be extracted by taking a video with a smartphone camera as users place their finger on the sensor.
 The blood flowing through the finger changes the reflective properties of the skin, which is captured by subtle changes in the video color.
 
-<p align="center"><img src="https://github.com/ssloxford/seeing-red/blob/master/images/teaser.gif" width="50%"></p>
+<p align="center"><img src="https://raw.githubusercontent.com/ssloxford/seeing-red/master/images/teaser.gif" width="50%"></p>
 
 We collected PPG signals from 15 participants over several sessions (6-11), in each session the participant places his finger on the camera while a 30 seconds long video is taken.
 We extract the raw value of the LUMA component of each video frame to obtain the underlying PPG signal from a video.
