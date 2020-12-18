@@ -1,6 +1,6 @@
 # Seeing Red: PPG Biometrics Using Smartphone Cameras
 
-This repository contains the code for the paper "[Seeing Red: PPG Biometrics Using Smartphone Cameras](https://arxiv.org/pdf/2004.07088.pdf)" published in the Proceedings of the IEEE Conference on Computer Vision and Pattern Recognition Workshops at the [15th IEEE Computer Vision Society Workshop on Biometrics](https://www.vislab.ucr.edu/Biometrics2020/).
+This repository contains the code for the paper "[Seeing Red: PPG Biometrics Using Smartphone Cameras](https://arxiv.org/pdf/2004.07088.pdf)" published in the Proceedings of the IEEE Conference on Computer Vision and Pattern Recognition Workshops (CVPRW) at the [15th IEEE Computer Vision Society Workshop on Biometrics](https://www.vislab.ucr.edu/Biometrics2020/).
 This work is a collaboration between [Giulio Lovisotto](https://github.com/giuliolovisotto/), [Henry Turner](http://www.cs.ox.ac.uk/people/henry.turner/) and [Simon Eberz](https://www.cs.ox.ac.uk/people/simon.eberz/) from the [System Security Lab](http://www.cs.ox.ac.uk/groups/seclab/) at University of Oxford.
 
 
@@ -59,39 +59,49 @@ NB.: paper Section 5.4: EER User Distribution re-uses the results from `exp3` an
 A file `results/<expid>/all.npy` is a numpy multidimensional array containing EER measurements, each table dimension is described by the `descr.json` contained in the same folder.
 
 For example, if you load the result file for `exp1` and its description file, you can read results this way: 
-```
+```markdown
 import numpy as np
 import json
-eers = np.load("/home/data/results/exp1/all.npy")  # load the file
-descr = json.load(open("/home/data/results/exp1/descr.json"))  # load the description for the result file
+# load the file
+eers = np.load("/home/data/results/exp1/all.npy")  
+# load the description for the result file
+descr = json.load(open("/home/data/results/exp1/descr.json"))  
 
 # "header" in descr decribes the dimensions of the eers array
 # the number of dimensions of eers should match the length of the header
 assert len(descr["header"]) == len(eers.shape)
 
-print(descr["header"])  # ["fold", "clf", "window_size", "user"]
-print(eers.shape)  # should be (2, 3, 5, 14) for exp1
+# ["fold", "clf", "window_size", "user"]
+print(descr["header"])  
+# should be (2, 3, 5, 14) for exp1
+print(eers.shape)  
 
 # let's print an EER for a specific instance
 # select one index across each dimension
 fold_index = 0
-clf_index = descr["clf"].index("SVM")  # one of ["SVM", "GBT", "RFC"]
-aws_index = descr["window_size"].index(5)  # one of [1, 2, 5, 10, 20]
+# one of ["SVM", "GBT", "RFC"]
+clf_index = descr["clf"].index("SVM")  
+# one of [1, 2, 5, 10, 20]
+aws_index = descr["window_size"].index(5)  
 usr_index = 3 
 print("The EER measured for fold %d, classifier %s, aggregation window size of %d and user %d is %.4f" % (
           fold_index, descr["clf"][clf_index], descr["window_size"][aws_index], usr_index, eers[fold_index, clf_index, aws_index, usr_index]))
 ```
 
 In the paper, to get an EER for a (classifier, aggregation window size) pair, we take the average across folds and across users:
-```
-# let's take "SVM" and aggregation window size of 5
-eers = np.load("/home/data/results/exp1/all.npy")  # load the file
-chosen_clf = "SVM"  # one of ["SVM", "GBT", "RFC"]
-chosen_aws = 5  # one of [1, 2, 5, 10, 20]
+```markdown
+## let's take "SVM" and aggregation window size of 5
+# load the file
+eers = np.load("/home/data/results/exp1/all.npy")  
+# one of ["SVM", "GBT", "RFC"]
+chosen_clf = "SVM"  
+# one of [1, 2, 5, 10, 20]
+chosen_aws = 5  
 clf_index = descr["clf"].index(chosen_clf)
 aws_index = descr["window_size"].index(chosen_aws)
 eers = eers[:, clf_index, aws_index, :]
-eers_mean = eers.mean(axis=0).mean(axis=-1)  # we average across folds first to produce confidence intervals
+# we average across folds first to produce confidence intervals
+eers_mean = eers.mean(axis=0).mean(axis=-1)  
 eers_std = eers.mean(axis=0).std(axis=-1)
 print("The average EER measured for exp1 using %s and aggregation window size of %d is %.4f with standard deviation of %.4f" % (
            chosen_clf, chosen_aws, eers_mean, eers_std))
