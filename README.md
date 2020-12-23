@@ -122,7 +122,7 @@ If you use this repository please cite the paper as follows:
 ```
 
 ## Contributors
- * [Giulio Lovisotto](https://github.com/giuliolovisotto/)
+ * [Giulio Lovisotto](https://giuliolovisotto.github.io)
  * [Henry Turner](http://www.cs.ox.ac.uk/people/henry.turner/)
  * [Simon Eberz](https://www.cs.ox.ac.uk/people/simon.eberz/)
 
