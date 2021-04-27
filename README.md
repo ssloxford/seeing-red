@@ -19,7 +19,7 @@ The signals are then preprocessed with a set of filters to remove trends and hig
 
 We designed a set of features that capture the distinctiveness of each individual's PPG signal and we evaluated the authentication performance with a  set of experiments (see [Reproduce Evaluation](#reproduce-evaluation)).
 
-<p align="center"><img src="https://raw.githubusercontent.com/ssloxford/seeing-red/master/images/features.png" width="70%"></p>
+<p align="center"><img src="https://raw.githubusercontent.com/ssloxford/seeing-red/master/images/features.jpg" width="70%"></p>
 
 See the conference presentation [slides](https://github.com/ssloxford/seeing-red/blob/master/images/talk.pdf)
 
