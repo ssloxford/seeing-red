@@ -1,9 +1,7 @@
-.DS_STORE
-ssl.HeartbeatApp 2019-07-15 16:33.49.553.xcappdata/
 # Xcode
 #
 # gitignore contributors: remember to update Global/Xcode.gitignore, Objective-C.gitignore & Swift.gitignore
-
+.DS_STORE
 ## User settings
 xcuserdata/
 
