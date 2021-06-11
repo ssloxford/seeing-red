@@ -10,7 +10,6 @@ import Foundation
 import UIKit
 //import CameraManager
 import AVFoundation
-import Alamofire
 import CoreMotion
 
 class CaptureViewController : UIViewController {

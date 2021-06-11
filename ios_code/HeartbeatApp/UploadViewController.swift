@@ -10,7 +10,6 @@ import Foundation
 import UIKit
 import AVFoundation
 import CoreMedia
-import Alamofire
 import SwiftUI
 
 class UploadViewController : UIViewController {
