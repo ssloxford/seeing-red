@@ -11,6 +11,11 @@ import UIKit
 
 public extension UIDevice {
     
+    
+    /*
+     This code for obtainining device name is based on the following stack overflow answer:
+     https://stackoverflow.com/questions/26028918/how-to-determine-the-current-iphone-device-model
+     */
     static let modelName: String = {
         var systemInfo = utsname()
         uname(&systemInfo)

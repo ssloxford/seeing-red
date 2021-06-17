@@ -11,6 +11,7 @@ import UIKit
 //import CameraManager
 import AVFoundation
 import CoreMotion
+import Photos
 
 class CaptureViewController : UIViewController {
     
@@ -129,11 +130,10 @@ class CaptureViewController : UIViewController {
         cameraManager.exposureMode = .custom
         cameraManager._changeExposureDuration(value: 0.9)
 //        cameraManager.exposureValue = 0.5
-        // TODO: change the iso somehow? <- need to extend the camera manager class for this, but should be
         
         cameraManager.videoStabilisationMode = .auto
         cameraManager.shouldUseLocationServices = false
-        cameraManager.videoAlbumName = "HeartbeatVideos"
+        cameraManager.videoAlbumName = "HeartbeatVideos" // not used, saved to normal camera roll later in export process
 //        cameraManager.cameraOutputQuality = .low
         cameraManager.shouldEnableTapToFocus = false
         cameraManager.shouldEnableExposure = false
@@ -226,6 +226,8 @@ class CaptureViewController : UIViewController {
         }
     }
     
+    
+  
     @objc func onTimerFires()
     {
         timeLeft -= 1
@@ -266,8 +268,9 @@ class CaptureViewController : UIViewController {
             timeLeft = videoLength
             cameraButton.isSelected = false
             cameraManager.stopVideoRecording({ (videoURL, error) -> Void in
-                    self.cameraButton.setTitle("Beginning upload", for: UIControl.State.selected)
+//                    self.cameraButton.setTitle("Beginning upload", for: UIControl.State.selected)
 //                    print(videoURL)
+                
                     let documentsUrl =  FileManager.default.urls(for: .documentDirectory, in: .userDomainMask).first
                     let destinationPath = documentsUrl!.appendingPathComponent("video.mp4")
                 

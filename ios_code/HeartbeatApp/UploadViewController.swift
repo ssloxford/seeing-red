@@ -6,11 +6,19 @@
 //  Copyright © 2019 SSL Oxford. All rights reserved.
 //
 
+
+/*
+ Videos are no longer uploaded in this VC, but the original video is saved to camera roll, the compression we performed before upload is applied, and the compressed version of the video is also saved to camera roll.
+ 
+ 
+ */
+
 import Foundation
 import UIKit
 import AVFoundation
 import CoreMedia
 import SwiftUI
+import Photos
 
 class UploadViewController : UIViewController {
     
@@ -31,6 +39,7 @@ class UploadViewController : UIViewController {
     var videoAsset : AVAsset?
     var accelData:String? = nil
     private var exportSession: VIExportSession!
+    
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -86,6 +95,7 @@ class UploadViewController : UIViewController {
     
     
     @IBAction func StartUpload(_ sender: Any) {
+        HomeButton.isEnabled = false
         checkVideo()
     }
     
@@ -120,9 +130,36 @@ class UploadViewController : UIViewController {
         }
         
         // scale the video here
+        self.saveVideoToAlbum(videoPath!, nil)
         scaleVideo(inputVideo: videoPath!)
         
     }
+    
+    func requestAuthorization(completion: @escaping ()->Void) {
+            if PHPhotoLibrary.authorizationStatus() == .notDetermined {
+                PHPhotoLibrary.requestAuthorization { (status) in
+                    DispatchQueue.main.async {
+                        completion()
+                    }
+                }
+            } else if PHPhotoLibrary.authorizationStatus() == .authorized{
+                completion()
+            }
+        }
+
+
+
+    func saveVideoToAlbum(_ outputURL: URL, _ completion: ((Error?) -> Void)?) {
+        requestAuthorization {
+                PHPhotoLibrary.shared().performChanges({
+                    PHAssetChangeRequest.creationRequestForAssetFromVideo(atFileURL: outputURL)
+                }) { saved, error in
+                    
+                    print("video saved")
+                }
+        }
+        }
+    
     
     func configureExportConfiguration(videoTrack: AVAssetTrack) {
         exportSession.videoConfiguration.videoOutputSetting = {
@@ -166,11 +203,19 @@ class UploadViewController : UIViewController {
         
         exportSession.completionHandler = { [weak self] (error) in
             guard let strongSelf = self else { return }
-            DispatchQueue.main.async {
+            DispatchQueue.main.async { [self] in
                 if let error = error {
                     print(error.localizedDescription)
+                    self!.HomeButton.isEnabled = true
                 } else {
                     print("Exporting to new format now complete, can do what you like")
+                    // saved exported file here
+                    
+                    strongSelf.saveVideoToAlbum(self!.scaledPath!, nil)
+                    self!.ActionLabel.text = "Finished Saving"
+                    self!.HomeButton.isEnabled = true
+                    
+                    
                 }
             }
         }

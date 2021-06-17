@@ -17,17 +17,8 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
 
     func application(_ application: UIApplication, didFinishLaunchingWithOptions launchOptions: [UIApplication.LaunchOptionsKey: Any]?) -> Bool {
         // Override point for customization after application launch.
-        registerForPushNotifications()
-        
-        let notificationOption = launchOptions?[.remoteNotification]
-        
-        // 1
-        if notificationOption as? [String: AnyObject] != nil {
-            // app launched from notification, load the capture screen straight away
-            let defaults = UserDefaults.standard
-            defaults.set(true, forKey: defaultsKeys.CaptureSessionFromNotification)
-        }
-        
+        // registerForPushNotifications()
+                
         return true
     }
 
@@ -54,13 +45,7 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
     }
 
     func registerForPushNotifications() {
-//        UNUserNotificationCenter.current() // 1
-//            .requestAuthorization(options: [.alert, .sound, .badge]) { // 2
-//                granted, error in
-//                print("Permission granted: \(granted)") // 3
-//                let defaults = UserDefaults.standard
-//                defaults.set(granted, forKey: defaultsKeys.PushNotificationsAccepted)
-//        }
+
         UNUserNotificationCenter.current()
             .requestAuthorization(options: [.alert, .sound, .badge]) {
                 [weak self] granted, error in
@@ -82,21 +67,5 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
         }
     }
     
-    func application(
-        _ application: UIApplication,
-        didRegisterForRemoteNotificationsWithDeviceToken deviceToken: Data
-        ) {
-        let tokenParts = deviceToken.map { data in String(format: "%02.2hhx", data) }
-        let token = tokenParts.joined()
-        print("Device Token: \(token)")
-        let defaults = UserDefaults.standard
-        defaults.set(token, forKey: defaultsKeys.PushNotificationsAccepted)
-    }
-    
-    func application(
-        _ application: UIApplication,
-        didFailToRegisterForRemoteNotificationsWithError error: Error) {
-        print("Failed to register: \(error)")
-    }
 }
 

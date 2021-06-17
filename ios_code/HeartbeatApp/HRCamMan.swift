@@ -5,6 +5,10 @@
 //  Created by Natalia Terlecka on 10/10/14.
 //  Modified by Henry Turner on 16/07/2019.
 
+/*
+ Custom version of the camera manager class found here: https://github.com/imaginary-cloud/CameraManager
+ */
+
 
 //
 
@@ -1794,7 +1798,6 @@ open class CameraManager: NSObject, AVCaptureFileOutputRecordingDelegate, UIGest
         
         let device : AVCaptureDevice = backCameraDevice!
         configureCameraForHighestFrameRate(device: device)
-        print("Set back camera to 60 fps mode")
     }
     
     fileprivate func _removeMicInput() {

@@ -6,6 +6,10 @@
 //  Copyright © 2018 Vito. All rights reserved.
 //
 
+/*
+ Source code from here: https://github.com/VideoFlint/VIExportSession
+ */
+
 import AVFoundation
 
 public class ExportConfiguration {
