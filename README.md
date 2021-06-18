@@ -28,6 +28,8 @@ See the conference presentation [slides](https://github.com/ssloxford/seeing-red
 The [dataset](https://ora.ox.ac.uk/objects/uuid:1a04e852-e7e1-4981-aa83-f2e729371484) used for this paper has been published online on ORA and can be freely downloaded.
 The dataset contains a set of videos for 14 participants who consented to their data being shared, ethics approval number SSD/CUREC1A CS_C1A_19_032.
 Each video is a 30 seconds long recording which was taken as the participant kept his index finger on the smartphone camera, see a preview here.
+The dataset was collected using a custom built app on an iPhone X, the [iOS application source code](https://github.com/ssloxford/seeing-red/tree/master/ios_code) is available in this repository.
+
 
 <p align="center"><img src="https://raw.githubusercontent.com/ssloxford/seeing-red/master/images/video-example.gif" width="50%"></p>
 
