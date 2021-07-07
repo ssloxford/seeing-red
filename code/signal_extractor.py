@@ -152,7 +152,7 @@ def visualize_signal(signals, labels, output_fname, title=""):
 
 
 # lets make this one parallel
-def process_single_file(file, user_fold, output_folder, params, users, se):
+def process_single_file(file, user_fold, output_folder, params, users, se, user, i):
     filepath = os.path.join(user_fold, file)
     fname = file.split(".")[0]
     csv_fpath = os.path.join(output_folder, user, fname + ".csv")
@@ -235,7 +235,7 @@ if __name__ == "__main__":
             os.makedirs(os.path.join(args.output_folder, user), exist_ok=True)
 
             Parallel(n_jobs=args.number_of_cpus)(delayed(process_single_file)(
-                file, user_fold, args.output_folder, params, users, SignalExtractor(sample_rate=params["frame_rate"]))
+                file, user_fold, args.output_folder, params, users, SignalExtractor(sample_rate=params["frame_rate"]), user, i)
                                for file in sorted(user_files))
 
             for file in sorted(user_files):
