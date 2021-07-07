@@ -155,7 +155,7 @@ def visualize_signal(signals, labels, output_fname, title=""):
 def process_single_file(file, user_fold, output_folder, params, users, se):
     filepath = os.path.join(user_fold, file)
     fname = file.split(".")[0]
-    csv_fpath = os.path.join(output_folder, user, fname + ".csv")
+    csv_fpath = os.path.join(output_folder, users, fname + ".csv")
 
     if not os.path.isfile(csv_fpath):
         columns, extracted_s = [], []
@@ -171,10 +171,10 @@ def process_single_file(file, user_fold, output_folder, params, users, se):
             ioo+=1
 
         vidcap.release()
-        for extractor in params["extractor"]:
+        for i,extractor in enumerate(params["extractor"]):
             columns.append(extractor["name"])
             sys.stdout.write(
-                "{} ({}/{}),{},{}\n".format(user, i + 1, len(users), file, extractor["name"]))
+                "{} ({}/{}),{},{}\n".format(users, i + 1, len(users), file, extractor["name"]))
             sys.stdout.flush()
             assert len(extractor["functions"]) == 1, "Only one extractor function is supported, check config.json"
             for fun_name in extractor["functions"]:
